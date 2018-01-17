@@ -1,24 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Button } from 'semantic-ui-react';
-import isEmail from 'validator/lib/isEmail';
 import EmailError from '../messages/EmailError';
 
-class SignupForm extends React.Component {
+class ResetPasswordForm extends React.Component {
   state = {
     data: {
-      email: '',
+      token: this.props.token,
       password: '',
+      passwordConfirmation: '',
     },
     loading: false,
     errors: {},
   };
 
-  onChange = e =>
+  onChange = e => {
     this.setState({
       ...this.state,
       data: { ...this.state.data, [e.target.name]: e.target.value },
     });
+  };
 
   onSubmit = e => {
     e.preventDefault();
@@ -36,49 +37,52 @@ class SignupForm extends React.Component {
 
   validate = data => {
     const errors = {};
-
-    if (!isEmail(data.email)) errors.email = 'Invalid email';
     if (!data.password) errors.password = "Can't be blank";
-
+    if (data.password !== data.passwordConfirmation)
+      errors.password = 'Passwords must match';
     return errors;
   };
 
   render() {
-    const { data, errors, loading } = this.state;
+    const { errors, data, loading } = this.state;
+
     return (
       <Form onSubmit={this.onSubmit} loading={loading}>
+        <h2>Reset Password</h2>
         <Form.Field error={!!errors.email}>
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="example@example.com"
-            value={data.email}
-            onChange={this.onChange}
-          />
-          {errors.email && <EmailError text={errors.email} />}
-        </Form.Field>
-        <Form.Field error={!!errors.password}>
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">KPassword</label>
           <input
             type="password"
             id="password"
             name="password"
-            placeholder="password"
+            placeholder="your new password"
             value={data.password}
             onChange={this.onChange}
           />
           {errors.password && <EmailError text={errors.password} />}
         </Form.Field>
-        <Button primary>Sign up</Button>
+        <Form.Field error={!!errors.email}>
+          <label htmlFor="passwordConfirmation">Repeat Password</label>
+          <input
+            type="password"
+            id="passwordConfirmation"
+            name="passwordConfirmation"
+            placeholder="type it again"
+            value={data.passwordConfirmation}
+            onChange={this.onChange}
+          />
+          {errors.passwordConfirmation && (
+            <EmailError text={errors.passwordConfirmation} />
+          )}
+        </Form.Field>
+        <Button primary>Reset</Button>
       </Form>
     );
   }
 }
 
-SignupForm.propTypes = {
+ResetPasswordForm.propTypes = {
   submit: PropTypes.func.isRequired,
 };
 
-export default SignupForm;
+export default ResetPasswordForm;

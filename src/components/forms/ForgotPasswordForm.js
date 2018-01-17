@@ -1,24 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Button } from 'semantic-ui-react';
+import { Form, Button, Message } from 'semantic-ui-react';
 import isEmail from 'validator/lib/isEmail';
 import EmailError from '../messages/EmailError';
 
-class SignupForm extends React.Component {
+class ForgotPasswordForm extends React.Component {
   state = {
-    data: {
-      email: '',
-      password: '',
-    },
+    data: { email: '' },
     loading: false,
     errors: {},
   };
 
-  onChange = e =>
+  onChange = e => {
     this.setState({
       ...this.state,
       data: { ...this.state.data, [e.target.name]: e.target.value },
     });
+  };
 
   onSubmit = e => {
     e.preventDefault();
@@ -36,17 +34,15 @@ class SignupForm extends React.Component {
 
   validate = data => {
     const errors = {};
-
     if (!isEmail(data.email)) errors.email = 'Invalid email';
-    if (!data.password) errors.password = "Can't be blank";
-
     return errors;
   };
 
   render() {
-    const { data, errors, loading } = this.state;
+    const { errors, data, loading } = this.state;
     return (
       <Form onSubmit={this.onSubmit} loading={loading}>
+        {!!errors.global && <Message negative>{errors.global}</Message>}
         <Form.Field error={!!errors.email}>
           <label htmlFor="email">Email</label>
           <input
@@ -59,26 +55,14 @@ class SignupForm extends React.Component {
           />
           {errors.email && <EmailError text={errors.email} />}
         </Form.Field>
-        <Form.Field error={!!errors.password}>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="password"
-            value={data.password}
-            onChange={this.onChange}
-          />
-          {errors.password && <EmailError text={errors.password} />}
-        </Form.Field>
-        <Button primary>Sign up</Button>
+        <Button primary>Send</Button>
       </Form>
     );
   }
 }
 
-SignupForm.propTypes = {
+ForgotPasswordForm.propTypes = {
   submit: PropTypes.func.isRequired,
 };
 
-export default SignupForm;
+export default ForgotPasswordForm;
