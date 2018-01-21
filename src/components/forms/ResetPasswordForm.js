@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Button } from 'semantic-ui-react';
-import EmailError from '../messages/EmailError';
+import InlineError from '../messages/InlineError';
 
 class ResetPasswordForm extends React.Component {
   state = {
@@ -59,7 +59,7 @@ class ResetPasswordForm extends React.Component {
             value={data.password}
             onChange={this.onChange}
           />
-          {errors.password && <EmailError text={errors.password} />}
+          {errors.password && <InlineError text={errors.password} />}
         </Form.Field>
         <Form.Field error={!!errors.email}>
           <label htmlFor="passwordConfirmation">Repeat Password</label>
@@ -72,7 +72,7 @@ class ResetPasswordForm extends React.Component {
             onChange={this.onChange}
           />
           {errors.passwordConfirmation && (
-            <EmailError text={errors.passwordConfirmation} />
+            <InlineError text={errors.passwordConfirmation} />
           )}
         </Form.Field>
         <Button primary>Reset</Button>

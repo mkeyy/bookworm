@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const EmailError = ({ text }) => (
+const InlineError = ({ text }) => (
     <span style={{ color: "#ae5856" }}>{text}</span>
 );
 
-EmailError.propTypes = {
+InlineError.propTypes = {
     text: PropTypes.string.isRequired
 };
 
-export default EmailError;
+export default InlineError;

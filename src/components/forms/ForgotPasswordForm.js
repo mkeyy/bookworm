@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Button, Message } from 'semantic-ui-react';
 import isEmail from 'validator/lib/isEmail';
-import EmailError from '../messages/EmailError';
+import InlineError from '../messages/InlineError';
 
 class ForgotPasswordForm extends React.Component {
   state = {
@@ -53,7 +53,7 @@ class ForgotPasswordForm extends React.Component {
             value={data.email}
             onChange={this.onChange}
           />
-          {errors.email && <EmailError text={errors.email} />}
+          {errors.email && <InlineError text={errors.email} />}
         </Form.Field>
         <Button primary>Send</Button>
       </Form>

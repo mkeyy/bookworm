@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Button, Message } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import Validator from 'validator';
-import EmailError from '../messages/EmailError';
+import InlineError from '../messages/InlineError';
 
 class LoginForm extends React.Component {
   state = {
@@ -58,7 +58,7 @@ class LoginForm extends React.Component {
             value={data.email}
             onChange={this.onChange}
           />
-          {errors.email && <EmailError text={errors.email} />}
+          {errors.email && <InlineError text={errors.email} />}
         </Form.Field>
         <Form.Field error={!!errors.password}>
           <label htmlFor="password">Password</label>
@@ -70,7 +70,7 @@ class LoginForm extends React.Component {
             value={data.password}
             onChange={this.onChange}
           />
-          {errors.password && <EmailError text={errors.password} />}
+          {errors.password && <InlineError text={errors.password} />}
         </Form.Field>
         <Button primary>Login</Button>
       </Form>
