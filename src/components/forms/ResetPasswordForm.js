@@ -50,7 +50,7 @@ class ResetPasswordForm extends React.Component {
       <Form onSubmit={this.onSubmit} loading={loading}>
         <h2>Reset Password</h2>
         <Form.Field error={!!errors.email}>
-          <label htmlFor="password">KPassword</label>
+          <label htmlFor="password">Password</label>
           <input
             type="password"
             id="password"

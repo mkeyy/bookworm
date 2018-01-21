@@ -8,6 +8,7 @@ import SignupPage from './components/pages/SignupPage';
 import ConfirmationPage from './components/pages/ConfirmationPage';
 import ForgotPasswordPage from './components/pages/ForgotPasswordPage';
 import ResetPasswordPage from './components/pages/ResetPasswordPage';
+import NewBookPage from './components/pages/NewBookPage';
 import UserRoute from './components/routes/UserRoute';
 import GuestRoute from './components/routes/GuestRoute';
 
@@ -45,6 +46,12 @@ const App = ({ location }) => (
       exact
       component={DashboardPage}
     />
+      <UserRoute
+          location={location}
+          path="/books/new"
+          exact
+          component={NewBookPage}
+      />
   </div>
 );
 
