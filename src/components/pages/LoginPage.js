@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Segment } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import LoginForm from '../forms/LoginForm';
 import { login } from '../../actions/auth';
+import TopBar from "../navigation/TopBar";
 
 class LoginPage extends React.Component {
   submit = data =>
@@ -11,13 +13,13 @@ class LoginPage extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Login Page</h1>
+      <Segment vertical padded>
+        <TopBar page="Login Page"/>
 
         <LoginForm submit={this.submit} />
 
         <Link to="/forgot_password">Forgot Password?</Link>
-      </div>
+      </Segment>
     );
   }
 }

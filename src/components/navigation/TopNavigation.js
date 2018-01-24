@@ -8,7 +8,7 @@ import gravatarURL from 'gravatar-url';
 
 const TopNavigation = ({ user, logout }) => (
   <Menu secondary pointing>
-    <Menu.Item as={Link} to="/dashboard">Dashboard</Menu.Item>
+    <Menu.Item as={Link} to="/"><h3>Home</h3></Menu.Item>
     <Menu.Item position="right">
       <Dropdown trigger={<Image avatar src={gravatarURL(user.email)} />}>
         <Dropdown.Menu>

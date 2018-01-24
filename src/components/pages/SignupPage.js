@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Segment } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import SignupForm from '../forms/SignupForm';
 import { signup } from '../../actions/users';
+import TopBar from '../navigation/TopBar';
 
 class SignupPage extends React.Component {
   submit = data =>
@@ -10,11 +12,11 @@ class SignupPage extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Signup Page</h1>
+      <Segment vertical padded>
+        <TopBar page="Signup Page" />
 
         <SignupForm submit={this.submit} />
-      </div>
+      </Segment>
     );
   }
 }
