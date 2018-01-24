@@ -14,7 +14,7 @@ const HomePage = ({ isAuthenticated, logout }) => {
           <h2>Bookworm</h2>
         </Header.Content>
 
-        <Header.Subheader as="h4" textAlign="center">
+        <Header.Subheader as="h4">
           {isAuthenticated ? (
             <div>
               <Button color="blue" as={Link} to="/dashboard">
