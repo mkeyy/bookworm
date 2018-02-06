@@ -16,7 +16,7 @@ class SearchBookForm extends React.Component {
     this.setState({
       query: data,
     });
-    this.timer = setTimeout(this.fetchOptions, 1000);
+    this.timer = setTimeout(this.fetchOptions, 200);
   };
 
   onChange = (e, data) => {

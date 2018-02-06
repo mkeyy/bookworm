@@ -46,12 +46,12 @@ const App = ({ location }) => (
       exact
       component={DashboardPage}
     />
-      <UserRoute
-          location={location}
-          path="/books/new"
-          exact
-          component={NewBookPage}
-      />
+    <UserRoute
+      location={location}
+      path="/books/new"
+      exact
+      component={NewBookPage}
+    />
   </div>
 );
 
