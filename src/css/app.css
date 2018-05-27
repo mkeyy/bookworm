@@ -1,0 +1,12 @@
+.full.height {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 100vh; }
+
+.ui.icon.header .circular.icon.massive {
+  font-size: 7em; }
+
+.ui.icon.header h2 {
+  font-size: 3em; }

@@ -7,30 +7,30 @@ import { allBooksSelector } from '../../reducers/books';
 import AddBookCtA from '../cts/AddBookCtA';
 
 const DashboardPage = ({ isConfirmed, books }) => {
-  return (
-    <div>
-      {!isConfirmed && <ConfirmedEmailMessage />}
-      <TopNavigation />
+    return (
+        <div>
+            {!isConfirmed && <ConfirmedEmailMessage />}
+            <TopNavigation />
 
-      {books.length === 0 && <AddBookCtA />}
-    </div>
-  );
+            {books.length === 0 && <AddBookCtA />}
+        </div>
+    );
 };
 
 DashboardPage.propTypes = {
-  isConfirmed: PropTypes.bool.isRequired,
-  books: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-    }).isRequired,
-  ).isRequired,
+    isConfirmed: PropTypes.bool.isRequired,
+    books: PropTypes.arrayOf(
+        PropTypes.shape({
+            title: PropTypes.string.isRequired,
+        }).isRequired,
+    ).isRequired,
 };
 
 function mapStateToProps(state) {
-  return {
-    isConfirmed: !!state.user.confirmed,
-    books: allBooksSelector(state),
-  };
+    return {
+        isConfirmed: !!state.user.confirmed,
+        books: allBooksSelector(state),
+    };
 }
 
 export default connect(mapStateToProps)(DashboardPage);
